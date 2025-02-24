@@ -12,7 +12,6 @@ import { Song, Queue, Playlist } from "..";
  * @param {number} [timeout=0] Voice channel leave timeout
  * @param {number} [volume=100] Player volume
  * @param {string} [quality=high] Player quality
- * @param {string} [localAddress] Custom ipv4/ipv6 address
  * @param {string} [ytdlRequestOptions] Custom YTDL Request Options object
  */
 export interface PlayerOptions {
@@ -23,7 +22,6 @@ export interface PlayerOptions {
     timeout?: number,
     volume?: number,
     quality?: 'low'|'high',
-    localAddress?: string,
     ytdlRequestOptions?: object,
 }
 
@@ -37,7 +35,6 @@ export interface PlayerOptions {
  * @param {number} [seek] Seek to a specific time
  * @param {number} [index] If the index was provided, it will add the song after the provided index in the Queue
  * @param {User} [requestedBy] The User who requested the Song
- * @param {string} [localAddress] Custom ipv4/ipv6 address
  */
 export interface PlayOptions {
     uploadDate?: 'hour'|'today'|'week'|'month'|'year',
@@ -47,7 +44,6 @@ export interface PlayOptions {
     seek?: number;
     index?: number;
     requestedBy?: User,
-    localAddress?: string
 };
 
 /**
@@ -57,14 +53,12 @@ export interface PlayOptions {
  * @param {User} [requestedBy] The User who requested the Song
  * @param {boolean} [shuffle=false] If it should shuffle the Songs
  * @param {number} [index] If the index was provided, it will add all songs of the playlist after the provided index in the Queue
- * @param {string} [localAddress] Custom ipv4/ipv6 address
  */
 export interface PlaylistOptions {
     maxSongs?: number,
     requestedBy?: User,
     shuffle?: boolean,
     index?: number,
-    localAddress?: string
 };
 
 /**
