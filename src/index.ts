@@ -1,9 +1,9 @@
-export { Player } from "./Player";
-export { Queue } from "./managers/Queue";
-export { Song } from "./managers/Song";
-export { Playlist } from "./managers/Playlist";
-export { ProgressBar } from "./managers/ProgressBar";
-export { DMPError, DMPErrors, DMPErrorMessages } from "./managers/DMPError";
-export { StreamConnection } from "./voice/StreamConnection";
-export { Utils } from "./utils/Utils";
-export * from "./types/types";
+export { Player } from "./Player.js";
+export { Queue } from "./managers/Queue.js";
+export { Song } from "./managers/Song.js";
+export { Playlist } from "./managers/Playlist.js";
+export { ProgressBar } from "./managers/ProgressBar.js";
+export { DMPError, DMPErrors, DMPErrorMessages } from "./managers/DMPError.js";
+export { StreamConnection } from "./voice/StreamConnection.js";
+export { Utils } from "./utils/Utils.js";
+export * from "./types/types.js";

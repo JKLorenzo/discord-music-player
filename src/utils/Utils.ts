@@ -9,7 +9,7 @@ import {
   RawPlaylist,
   RawSong,
   Song,
-} from "..";
+} from "../index.js";
 import fetch from "isomorphic-unfetch";
 import YTSR, { Video } from "ytsr";
 import Spotify from "spotify-url-info";

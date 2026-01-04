@@ -1,6 +1,6 @@
-import {AudioPlayerError, AudioResource } from "@discordjs/voice";
-import {User} from "discord.js";
-import { Song, Queue, Playlist } from "..";
+import { AudioPlayerError, AudioResource } from "@discordjs/voice";
+import { User } from "discord.js";
+import { Song, Queue, Playlist } from "../index.js";
 
 /**
  * Player options
@@ -15,14 +15,14 @@ import { Song, Queue, Playlist } from "..";
  * @param {string} [ytdlRequestOptions] Custom YTDL Request Options object
  */
 export interface PlayerOptions {
-    leaveOnEnd?: boolean,
-    leaveOnStop?: boolean,
-    leaveOnEmpty?: boolean,
-    deafenOnJoin?: boolean,
-    timeout?: number,
-    volume?: number,
-    quality?: 'low'|'high',
-    ytdlRequestOptions?: object,
+  leaveOnEnd?: boolean;
+  leaveOnStop?: boolean;
+  leaveOnEmpty?: boolean;
+  deafenOnJoin?: boolean;
+  timeout?: number;
+  volume?: number;
+  quality?: "low" | "high";
+  ytdlRequestOptions?: object;
 }
 
 /**
@@ -37,14 +37,14 @@ export interface PlayerOptions {
  * @param {User} [requestedBy] The User who requested the Song
  */
 export interface PlayOptions {
-    uploadDate?: 'hour'|'today'|'week'|'month'|'year',
-    duration?: 'short'|'long',
-    sortBy?: 'relevance'|'date'|'view count'|'rating',
-    timecode?: boolean;
-    seek?: number;
-    index?: number;
-    requestedBy?: User,
-};
+  uploadDate?: "hour" | "today" | "week" | "month" | "year";
+  duration?: "short" | "long";
+  sortBy?: "relevance" | "date" | "view count" | "rating";
+  timecode?: boolean;
+  seek?: number;
+  index?: number;
+  requestedBy?: User;
+}
 
 /**
  * Playlist options
@@ -55,11 +55,11 @@ export interface PlayOptions {
  * @param {number} [index] If the index was provided, it will add all songs of the playlist after the provided index in the Queue
  */
 export interface PlaylistOptions {
-    maxSongs?: number,
-    requestedBy?: User,
-    shuffle?: boolean,
-    index?: number,
-};
+  maxSongs?: number;
+  requestedBy?: User;
+  shuffle?: boolean;
+  index?: number;
+}
 
 /**
  * @typedef {object} ProgressBarOptions
@@ -69,10 +69,10 @@ export interface PlaylistOptions {
  * @property {string} [arrow=>] Bar ending
  */
 export interface ProgressBarOptions {
-    time?: boolean;
-    size?: number;
-    block?: string;
-    arrow?: string;
+  time?: boolean;
+  size?: number;
+  block?: string;
+  arrow?: string;
 }
 
 /**
@@ -87,13 +87,13 @@ export interface ProgressBarOptions {
  * @param {string} [quality=high] Player quality
  */
 export const DefaultPlayerOptions: PlayerOptions = {
-    leaveOnEnd: true,
-    leaveOnStop: true,
-    leaveOnEmpty: true,
-    deafenOnJoin: false,
-    timeout: 0,
-    volume: 100,
-    quality: 'high',
+  leaveOnEnd: true,
+  leaveOnStop: true,
+  leaveOnEmpty: true,
+  deafenOnJoin: false,
+  timeout: 0,
+  volume: 100,
+  quality: "high",
 };
 
 /**
@@ -103,8 +103,8 @@ export const DefaultPlayerOptions: PlayerOptions = {
  * @param {boolean} [timecode=false] If url with timecode (?t=) provided, will play from that moment
  */
 export const DefaultPlayOptions: PlayOptions = {
-    sortBy: 'relevance',
-    timecode: false
+  sortBy: "relevance",
+  timecode: false,
 };
 
 /**
@@ -114,8 +114,8 @@ export const DefaultPlayOptions: PlayOptions = {
  * @param {boolean} [shuffle=false] If it should shuffle the Songs
  */
 export const DefaultPlaylistOptions: PlaylistOptions = {
-    maxSongs: -1,
-    shuffle: false,
+  maxSongs: -1,
+  shuffle: false,
 };
 
 /**
@@ -127,11 +127,11 @@ export const DefaultPlaylistOptions: PlaylistOptions = {
  * @param {string} [arrow=>] Bar ending
  */
 export const DefaultProgressBarOptions: ProgressBarOptions = {
-    time: true,
-    size: 20,
-    block: '=',
-    arrow: '>'
-}
+  time: true,
+  size: 20,
+  block: "=",
+  arrow: ">",
+};
 
 /**
  * Raw Song object
@@ -144,13 +144,13 @@ export const DefaultProgressBarOptions: ProgressBarOptions = {
  * @property {boolean} isLive
  */
 export interface RawSong {
-    name: string,
-    author: string,
-    url: string,
-    thumbnail: string,
-    duration: string,
-    isLive: boolean
-    seekTime?: number;
+  name: string;
+  author: string;
+  url: string;
+  thumbnail: string;
+  duration: string;
+  isLive: boolean;
+  seekTime?: number;
 }
 
 /**
@@ -163,11 +163,11 @@ export interface RawSong {
  * @property {string} type
  */
 export interface RawPlaylist {
-    name: string,
-    author: string,
-    url: string,
-    songs: Song[],
-    type: 'playlist'|'album'
+  name: string;
+  author: string;
+  url: string;
+  songs: Song[];
+  type: "playlist" | "album";
 }
 
 /**
@@ -179,9 +179,9 @@ export interface RawPlaylist {
  * @typedef {number} RepeatMode
  */
 export enum RepeatMode {
-    DISABLED,
-    SONG,
-    QUEUE ,
+  DISABLED,
+  SONG,
+  QUEUE,
 }
 
 /**
@@ -260,17 +260,17 @@ export enum RepeatMode {
  */
 
 export interface PlayerEvents<T = unknown> {
-    channelEmpty: [queue: Queue<T>];
-    songAdd: [queue: Queue<T>, song: Song];
-    playlistAdd: [queue: Queue<T>, playlist: Playlist];
-    queueEnd: [queue: Queue<T>];
-    queueDestroyed: [queue: Queue<T>];
-    songChanged: [queue: Queue<T>, newSong: Song, oldSong: Song];
-    songFirst: [queue: Queue<T>, song: Song];
-    clientDisconnect: [queue: Queue<T>];
-    clientUndeafen: [queue: Queue<T>];
-    songMoved: [queue: Queue<T>, song: Song, oldIndex: number, newIndex: number];
-    error: [error: string, queue: Queue<T>];
+  channelEmpty: [queue: Queue<T>];
+  songAdd: [queue: Queue<T>, song: Song];
+  playlistAdd: [queue: Queue<T>, playlist: Playlist];
+  queueEnd: [queue: Queue<T>];
+  queueDestroyed: [queue: Queue<T>];
+  songChanged: [queue: Queue<T>, newSong: Song, oldSong: Song];
+  songFirst: [queue: Queue<T>, song: Song];
+  clientDisconnect: [queue: Queue<T>];
+  clientUndeafen: [queue: Queue<T>];
+  songMoved: [queue: Queue<T>, song: Song, oldIndex: number, newIndex: number];
+  error: [error: string, queue: Queue<T>];
 }
 
 /**
@@ -292,14 +292,14 @@ export interface PlayerEvents<T = unknown> {
  */
 
 export interface StreamConnectionEvents {
-    start: [AudioResource<Song>];
-    end: [AudioResource<Song>];
-    error: [AudioPlayerError];
+  start: [AudioResource<Song>];
+  end: [AudioResource<Song>];
+  error: [AudioPlayerError];
 }
 
 export interface RawApplePlaylist {
-    name: string
-    type: 'playlist'|'album'
-    author: string
-    tracks: { artist: string, title: string }[]
+  name: string;
+  type: "playlist" | "album";
+  author: string;
+  tracks: { artist: string; title: string }[];
 }

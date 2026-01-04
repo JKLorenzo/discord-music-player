@@ -4,6 +4,7 @@
   "description": "Complete framework to facilitate music commands using discord.js v14 and v13.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "test": "jest test/test.js",
